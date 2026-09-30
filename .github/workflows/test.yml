@@ -1,0 +1,34 @@
+name: Run Test
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Python-Unit-Tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python - --version 2.5.1
+
+      - name: Add poetry to our path
+        run: echo "{HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: Install our libraries
+        run: poetry install
+
+      - name: run Tests
+        run: poetry run pytest
