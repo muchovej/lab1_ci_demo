@@ -23,7 +23,7 @@ def test_lab2_health():
 
 def test_root_returns_not_found():
     response = client.get("/")
-    assert response.status_code == 200 # 404
+    assert response.status_code == 404
     assert response.json() == {"detail": "Not Found"}
 
 
