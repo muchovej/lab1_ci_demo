@@ -1,0 +1,22 @@
+[project]
+name = "src"
+version = "0.1.0"
+description = "DATASCI 255 Lab 1 reference solution: a containerized FastAPI service."
+authors = [
+    {name = "James Winegar", email = "james.winegar@corrdyn.com"},
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "fastapi[standard] (>=0.141.1,<0.142.0)",
+]
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.1.1,<10.0.0)",
+    "ruff (>=0.16.4,<0.17.0)",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
